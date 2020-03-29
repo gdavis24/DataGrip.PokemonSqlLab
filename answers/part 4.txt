@@ -1,0 +1,19 @@
+# Sort the data by finding out which trainer has the strongest pokemon so that this will act as a ranking of strongest to weakest trainer. 
+You may interpret strongest in whatever way you want, but you will have to explain your decision.
+
+
+select
+p.name as "Pokemon Name",
+t.trainername as "Trainer Name",
+pt.pokelevel as "Level",
+p.primary_type as "Primary Type",
+p.secondary_type as "Secondary Type",
+(pt.hp + pt.attack + pt.defense + pt.spatk + pt.spdef + pt.speed) / 6 as Score
+from pokemons as p
+join pokemon_trainer as pt
+on pt.trainerID = p.id join trainers as t
+on pt.trainerID = t.trainerID order by Score desc;
+
+By finding the average score of the pokemon's stats for the trainers, I am declareing Ace Duo Elina & Sean is the strongest.
+This one is interesting beacuse it is listing their two sets of 6 pokemon, giving them a total of 12.
+However, the first 6 have a score of 130.3333 while the second 6 have a score of 128.5.

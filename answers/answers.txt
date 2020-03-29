@@ -1,0 +1,23 @@
+1.) select * from types;
+
+2.) select * from pokemons where id = 45;
+
+3.) select * from pokemons;
+
+4.) select * FROM types;
+
+5.) select count(*) from pokemons where secondary_type is not null;
+
+6.) select pokemons.name, types.name from types right join pokemons on types.id = pokemons.primary_type;
+
+7.) select * from pokemons where name = "Rufflet";
+
+8.) select pokemons.name from pokemons left join pokemon_trainer on pokemon_trainer.pokemon_id = pokemons.id where pokemon_trainer.trainerID = 303;
+
+9.) select pokemons.name, types.name from types left join pokemons on types.id = pokemons.secondary_type where secondary_type = 7;
+
+10.) select types.name, count(*) from pokemons left join types on pokemons.primary_type = types.id group by types.id;
+
+11.) select count(distinct trainerID) from pokemon_trainer where pokelevel = 100 group by pokemon_id having count(*) > 1;
+
+12.) select sum(total) from (select count(distinct trainerID) as total from pokemon_trainer group by pokemon_id having count(*)=1)as x;
